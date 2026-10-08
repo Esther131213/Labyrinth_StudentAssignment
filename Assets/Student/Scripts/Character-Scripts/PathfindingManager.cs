@@ -75,10 +75,10 @@ public class PathfinderManager : MonoBehaviour
         int deltaX = to.x - from.x;
         int deltaY = to.y - from.y;
 
-        if (deltaX != 0)
+        if (deltaX != 0) // check if moving horizontally
         {
-            int wallX = deltaX > 0 ? to.x : from.x;
-            float wallCost = mapDataInterface.GetVerticalWallCost(wallX, from.y);
+            int wallX = deltaX > 0 ? to.x : from.x; // if deltaX > 0, do the left one, else do the right one
+            float wallCost = mapDataInterface.GetVerticalWallCost(wallX, from.y); 
             if (wallCost > 1f) baseCost = wallCost;
         }
         else if (deltaY != 0)
