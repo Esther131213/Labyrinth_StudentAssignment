@@ -46,15 +46,28 @@ public class Graph : MonoBehaviour
         jsonLoader.LoadJsonFile(jsonLoader.fileName);
     }
 
-    void AddEdge(int v, int w)
+    void AddEdge(JsonLoader jsonLoader)
     {
-        adj[v].Add(w);
-        adj[w].Add(v);
-        E++;
+        for (int i = 0; i < jsonLoader.GetMapData().width; i++)
+        {
+            for (int j = 0; j < jsonLoader.GetMapData().height; j++)
+            {
+                adj[i].Add(j); // Add edge from vertex v to vertex w
+                adj[j].Add(i); // Add edge from vertex w to vertex v
+                E++; // Increment the edge count
+            }
+        }
     }
 
-    void Vertices ()
+    void Vertices (JsonLoader jsonLoader)
     {
+        for (int i = 0; i < jsonLoader.GetMapData().width; i++)
+        {
+            for (int j = 0; j < jsonLoader.GetMapData().height; j++)
+            {
+                adj[i] = new ConcurrentBag<int>(); // Initialize the adjacency list for vertex i
+            }
+        }
     }
 
     List<int> Adjacent(int v)
@@ -62,8 +75,16 @@ public class Graph : MonoBehaviour
         return new List<int>();
     }
 
+    void Weight (IMapData mapData)
+    {
+        foreach (var edge in mapData.GetJumpsFrom(new Vector2Int(0, 0)))
+        {
+            
+        }
+    }
+
     string ToString()
     {
-        return "";
+        return "Vertices: " + V + ", Edges: " + E;
     }
 }
