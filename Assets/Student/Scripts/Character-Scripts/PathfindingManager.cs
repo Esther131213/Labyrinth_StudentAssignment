@@ -29,6 +29,7 @@ public class PathfinderManager : MonoBehaviour
 
     public void StartPathfinding()
     {
+
         MapData mapData = jsonLoader.GetMapData();
         if (mapData == null)
         {

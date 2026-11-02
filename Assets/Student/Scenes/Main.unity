@@ -565,6 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf171c1a0ab223d4ca6b46e60b1f03e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  E: 0
   jsonLoader: {fileID: 226252185}
 --- !u!1 &779053203
 GameObject:
