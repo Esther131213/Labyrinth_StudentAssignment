@@ -41,7 +41,7 @@ public static class PathfindingAlgorithm
         MinPriorityQueue priorityQueue = new MinPriorityQueue();
 
         // Initialize every node with infinite distance.
-        foreach (Vector2Int vertex in graph.Vertices())
+        foreach (Vector2Int vertex in graph.Vertices()) 
         {
             distances[vertex] = float.PositiveInfinity;
         }
@@ -52,8 +52,10 @@ public static class PathfindingAlgorithm
         priorityQueue.Enqueue(start, 0f); // Enqueue the starting position with priority 0.
 
         // Dijkstra's main loop.
-        while (priorityQueue.Count > 0)
+        while (priorityQueue.Count > 0) // time complexity: O((V + E) log V), where V is the number of vertices and E is the number of edges
         {
+            // The time complexity is O((V + E) log V) because each vertex is processed once, and each edge is examined once. The priority queue operations (enqueue and dequeue) take O(log V) time.
+
             // Get the node with the lowest priority (distance).
             QueueItem currentItem = priorityQueue.Dequeue();
 

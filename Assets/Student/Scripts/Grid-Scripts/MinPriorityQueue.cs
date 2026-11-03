@@ -38,16 +38,16 @@ namespace Assets.Student.Scripts.Grid_Scripts
             int index = heap.Count - 1;
 
             // Move the new item upwards until heap order is restored.
-            while (index > 0)
+            while (index > 0) // Time complexity: O(log n)
             {
-                int parentIndex = (index - 1) / 2;
+                int parentIndex = (index - 1) / 2; 
 
-                if (heap[parentIndex].Priority <= heap[index].Priority)
+                if (heap[parentIndex].Priority <= heap[index].Priority) // If the parent has a lower or equal priority, the heap property is satisfied.
                     break;
 
-                Swap(index, parentIndex);
+                Swap(index, parentIndex); // Swap the new item with its parent.
 
-                index = parentIndex;
+                index = parentIndex; // Move up to the parent's index.
             }
         }
 
@@ -64,20 +64,18 @@ namespace Assets.Student.Scripts.Grid_Scripts
             // Move the new root down until heap order is restored.
             int index = 0;
 
-            while (true)
+            while (true) // Time complexity: O(log n)
             {
                 int leftChild = index * 2 + 1;
                 int rightChild = index * 2 + 2;
                 int smallest = index;
 
-                if (leftChild < heap.Count &&
-                    heap[leftChild].Priority < heap[smallest].Priority)
+                if (leftChild < heap.Count && heap[leftChild].Priority < heap[smallest].Priority)
                 {
                     smallest = leftChild;
                 }
 
-                if (rightChild < heap.Count &&
-                    heap[rightChild].Priority < heap[smallest].Priority)
+                if (rightChild < heap.Count && heap[rightChild].Priority < heap[smallest].Priority)
                 {
                     smallest = rightChild;
                 }

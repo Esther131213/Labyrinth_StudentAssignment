@@ -28,9 +28,10 @@ public class Graph
     private void BuildGraph(IMapData mapData)
     {
         // Create all nodes
-        for (int x = 0; x < mapData.Width; x++) // Loop through the width of the map
+        // Time complexity: O(N^2) where N is the width and height of the map
+        for (int x = 0; x < mapData.Width; x++) // Loop through the width of the map. Time complexity: O(N) where N is the width of the map
         {
-            for (int y = 0; y < mapData.Height; y++) // Loop through the height of the map
+            for (int y = 0; y < mapData.Height; y++) // Loop through the height of the map. Time complexity: O(N) where N is the height of the map
             {
                 Vector2Int position = new Vector2Int(x, y); // Create a new Vector2Int for the current position
 
@@ -39,9 +40,10 @@ public class Graph
         }
 
         // Connect the nodes
-        for (int x = 0; x < mapData.Width; x++)
+        // Time complexity: O(N^2) where N is the width and height of the map
+        for (int x = 0; x < mapData.Width; x++) // time complexity: O(N) where N is the width of the map
         {
-            for (int y = 0; y < mapData.Height; y++)
+            for (int y = 0; y < mapData.Height; y++) // time complexity: O(N) where N is the height of the map
             {
                 Vector2Int current = new Vector2Int(x, y);
 
@@ -65,7 +67,7 @@ public class Graph
             Vector2Int.right
         };
 
-        foreach (Vector2Int direction in directions)
+        foreach (Vector2Int direction in directions) 
         {
             Vector2Int neighbour = current + direction; // Calculate the neighbour's position
 
@@ -115,16 +117,16 @@ public class Graph
         return wallCost; // Return the wall cost as the movement cost
     }
 
-    private void AddJumps(IMapData mapData)
+    private void AddJumps(IMapData mapData) // Time complexity: O(N^2 * M) where N is the width and height of the map, and M is the average number of jump connections per node
     {
 
-        for (int x = 0; x < mapData.Width; x++)
+        for (int x = 0; x < mapData.Width; x++) // Time complexity: O(N) where N is the width of the map
         {
-            for (int y = 0; y < mapData.Height; y++)
+            for (int y = 0; y < mapData.Height; y++) // Time complexity: O(N) where N is the height of the map
             {
                 Vector2Int current = new Vector2Int(x, y);
 
-                foreach (JumpConnection jump in mapData.GetJumpsFrom(current)) // Iterate through all jump connections from the current position
+                foreach (JumpConnection jump in mapData.GetJumpsFrom(current)) // Iterate through all jump connections from the current position. Time complexity: O(M) where M is the number of jump connections from the current position
                 {
                     adjacencyList[current].Add(new Edge(jump.To, jump.Cost)); // Add the jump connection to the adjacency list
                 }

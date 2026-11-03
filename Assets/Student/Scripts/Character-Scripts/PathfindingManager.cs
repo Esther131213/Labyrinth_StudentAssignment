@@ -62,7 +62,7 @@ public class PathfinderManager : MonoBehaviour
     private float CalculatePathCost(List<Vector2Int> path)
     {
         float totalCost = 0f;
-        for (int i = 0; i < path.Count - 1; i++)
+        for (int i = 0; i < path.Count - 1; i++) // Time complexity: O(n), where n is the number of nodes in the path   
             totalCost += GetMovementCost(path[i], path[i + 1]);
         return totalCost;
     }
@@ -96,7 +96,7 @@ public class PathfinderManager : MonoBehaviour
     {
         ClearDebugPath();
 
-        for (int i = 0; i < path.Count; i++)
+        for (int i = 0; i < path.Count; i++) // time complexity: O(n), where n is the number of nodes in the path
         {
             Vector2Int position = path[i];
             bool arrivedByJump = i > 0 && mapDataInterface.TryGetJumpCost(path[i - 1], position, out _);
@@ -130,7 +130,7 @@ public class PathfinderManager : MonoBehaviour
 
     private void ClearDebugPath()
     {
-        foreach (GameObject obj in debugPathObjects)
+        foreach (GameObject obj in debugPathObjects) // time complexity: O(n), where n is the number of debug path objects
             if (obj != null) Destroy(obj);
         debugPathObjects.Clear();
     }
