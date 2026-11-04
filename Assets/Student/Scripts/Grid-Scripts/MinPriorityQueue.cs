@@ -21,7 +21,7 @@ namespace Assets.Student.Scripts.Grid_Scripts
 
     public class MinPriorityQueue
     {
-        private List<QueueItem> heap = new List<QueueItem>();
+        private List<QueueItem> heap = new List<QueueItem>(); // Space complexity: O(V), where V is the number of items in the queue.
 
         public int Count
         {
