@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class Graph
 {
-    private Dictionary<Vector2Int, List<Edge>> adjacencyList;
+    private Dictionary<Vector2Int, List<Edge>> adjacencyList; // The adjacency list holds all the edges (connections) from each node to its neighbors
     private int width;
     private int height;
 
@@ -87,7 +87,7 @@ public class Graph
             // Determine the movement cost
             float weight = GetMovementCost(current, neighbour, mapData);
 
-            adjacencyList[current].Add(new Edge(neighbour, weight));
+            adjacencyList[current].Add(new Edge(neighbour, weight)); // Add the neighbour to the adjacency list with the calculated weight
         }
     }
     private float GetMovementCost(Vector2Int from, Vector2Int to, IMapData mapData)

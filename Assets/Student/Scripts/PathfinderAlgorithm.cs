@@ -32,13 +32,13 @@ public static class PathfindingAlgorithm
             return new List<Vector2Int> { start };
 
         // Cheapest known distance from start to each node.
-        Dictionary<Vector2Int, float> distances = new Dictionary<Vector2Int, float>();
+        Dictionary<Vector2Int, float> distances = new Dictionary<Vector2Int, float>(); // space complexity: O(V), where V is the number of vertices in the graph
 
         // Previous node in the cheapest known path.
-        Dictionary<Vector2Int, Vector2Int> previous = new Dictionary<Vector2Int, Vector2Int>();
+        Dictionary<Vector2Int, Vector2Int> previous = new Dictionary<Vector2Int, Vector2Int>(); // space complexity: O(V), where V is the number of vertices in the graph
 
         // Priority queue: lowest distance gets processed first.
-        MinPriorityQueue priorityQueue = new MinPriorityQueue();
+        MinPriorityQueue priorityQueue = new MinPriorityQueue(); // space complexity: O(V), where V is the number of vertices in the graph
 
         // Initialize every node with infinite distance.
         foreach (Vector2Int vertex in graph.Vertices()) 
